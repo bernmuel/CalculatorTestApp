@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculatorTestApp.Views.MyCalculator"
+             Title="MyCalculator">
+    <Grid ColumnDefinitions="100,30,100" 
+          RowDefinitions="10,auto,auto,30,auto,auto,35,auto"  
+          Margin="0, 100" 
+          HorizontalOptions="Center">
+
+        <!-- First Stepper and Label -->
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Text="{Binding NumericValue1}" 
+               FontSize="Large" 
+               HorizontalOptions="Center" />
+
+        <Stepper Grid.Row="1" 
+                 Grid.Column="2"  
+                 Minimum="0"
+                 Maximum="100"
+                 WidthRequest="100"
+                 Increment="1"
+                 Value="{Binding NumericValue1, Mode=TwoWay}" 
+                 Margin="0,0,0,20" />
+
+        <!-- Second Stepper and Label -->
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Text="{Binding NumericValue2}" 
+               FontSize="Large" 
+               HorizontalOptions="Center" />
+
+        <Stepper Grid.Row="2" 
+                 Grid.Column="2"  
+                 Minimum="0"
+                 Maximum="100"
+                 WidthRequest="100"
+                 Increment="1"
+                 Value="{Binding NumericValue2, Mode=TwoWay}" 
+                 Margin="0,0,0,20" />
+
+        <!-- First Row of Buttons with extra column for spacing -->
+        <Grid Grid.Row="4"
+              Grid.Column="0"
+              Grid.ColumnSpan="3" 
+              ColumnDefinitions="*,30,*"  
+              RowDefinitions="auto"
+              Margin="0,0,0,10">
+
+            <Button Grid.Row="0" 
+                    Grid.Column="0" 
+                    Text="Add" 
+                    Command="{Binding AddCommand}" 
+                    WidthRequest="120"  
+                    HeightRequest="40"  
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+
+            <Button Grid.Row="0" 
+                    Grid.Column="2" 
+                    Text="Subtract" 
+                    Command="{Binding SubtractCommand}" 
+                    WidthRequest="120"  
+                    HeightRequest="40"  
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+        </Grid>
+
+        <!-- Second Row of Buttons with extra column for spacing -->
+        <Grid Grid.Row="5"
+              Grid.Column="0"
+              Grid.ColumnSpan="3"  
+              ColumnDefinitions="*,30,*"  
+              RowDefinitions="auto">
+
+            <Button Grid.Row="0" 
+                    Grid.Column="0" 
+                    Text="Multiply" 
+                    Command="{Binding MultiplyCommand}" 
+                    WidthRequest="120"  
+                    HeightRequest="40"  
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+
+            <Button Grid.Row="0" 
+                    Grid.Column="2" 
+                    Text="Divide" 
+                    Command="{Binding DivideCommand}" 
+                    WidthRequest="120"  
+                    HeightRequest="40"  
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+        </Grid>
+
+        <!-- Display the result of the operations -->
+
+        <Grid Grid.Row="7"
+              Grid.Column="0"
+              Grid.ColumnSpan="3"
+              ColumnDefinitions="*,10,*"  
+              RowDefinitions="auto">
+
+            <Label Grid.Row="0"
+                   Text="Result: "
+                   FontSize="Large"
+                   HorizontalOptions="End"/>
+            <Label Grid.Row="0"
+                   Grid.Column="2"
+                   Text="{Binding Result}"
+                   FontSize="Large"
+                   HorizontalOptions="Start"/>
+        </Grid>
+    </Grid>
+</ContentPage>
